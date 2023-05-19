@@ -1,0 +1,13 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: tcproute-nginx
+  namespace: default
+spec:
+  parentRefs:
+  - name: demo-gateway # name of gateway
+    sectionName: http-server  # name of listenter
+  rules:
+  - backendRefs:
+    - name: my-nginx
+      port: 80
